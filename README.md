@@ -17,6 +17,10 @@ It was designed for physics experiments at school, in a physics laboratory, and 
 A transmitting unit is usually based on an Arduino, connected with a sensor and an nRF24L01+ module but a transmitting unit can be made with any microcontroller and any sensor;  
 ###PhyLab PCBs
 We designed two PhyLab PCBs, one that allows an nRF24L01+ module to be easily connected to the RaspberryPi and one that allows to easily build a transmitting unit; more details are available at https://lizzit.it/phylab/  
+<img src="http://i.imgur.com/BDOgZFu.jpg" width=400px/>
+<img src="http://i.imgur.com/aqlaFSg.jpg" width=400px/>
+<img src="http://i.imgur.com/2D74W3K.jpg" width=400px/>
+<img src="http://i.imgur.com/K00j45U.jpg" width=400px/>
 
 ##Software
 A pre-built image for RaspberryPI 3 is available, it includes all the software required on the server and in addition it creates a WiFi hotspot; this is the easiest way to set up a complete PhyLab 2.0 system.
