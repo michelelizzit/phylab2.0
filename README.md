@@ -1,8 +1,8 @@
 # PhyLab 2.0
-PhyLab 2.0 - https://lizzit.it/phylab
+[PhyLab 2.0] (https://lizzit.it/phylab)
 More details available at https://lizzit.it/phylab
 
-Copernico PhyLAB is an open-source, modular system; it makes laboratory experience more interesting simplifying the understanding of science and physics.
+PhyLab is an open-source, modular system; it makes laboratory experience more interesting simplifying the understanding of science and physics.
 Is has been created for school laboratories; it collects and processes experimental data at an incredibly high rate, makes plots and sends them to connected smartphones and other devices. It is composed of a series of collecting-transmitting Arduino-based units equipped with sensors; these deliver the data to the RaspberryPI-based central unit that produces real-time plots.
 This system collects  different types of data ( temperature, humidity, speed…).
 
