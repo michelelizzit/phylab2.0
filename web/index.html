@@ -15,7 +15,7 @@
 	<script type="text/javascript">
 
 		var nomeGrafico;
-		var updateFrequency = 10; /* valore in millisecondi*/
+		var updateFrequency = 10; /* value in milliseconds*/
 	    var defaultAutoScale = false;
 	    var lowCPU = false;
 	    var defaultSmoothLines = 0;
@@ -111,7 +111,7 @@
 			refreshChart();
 			setAutoScale();
 			fadeLoadingDiv();
-			//connectWebsocket();
+			connectWebsocket();
 		}
 
 		function downloadData() {
@@ -197,9 +197,9 @@
 		}
 		
 		function clearData() {
-			//websocket.send(sensorType + "D");
+			websocket.send(sensorType + "D");
 			resetChart();
-			alert("Dati cancellati");
+			alert("Data archive cleared");
 		}
 		
 		function getTemperature() {
@@ -214,22 +214,22 @@
 		}
 		
 		function resetChart() {
-			/*ferma il grafico*/
+			/*stops the chart*/
 			stopChart();
-			/*svuota il dataset*/
+			/*empty dataset*/
 			for (tmp = 0; tmp < valuesDisplayed; tmp++) {
 				data.labels.splice(0, 1);
 				data.datasets[0].data.splice(0, 1);
 			}
-			/*renderizza il grafico vuoto*/
+			/*renders the empty chart*/
 			myLineChart.update();
-			/*i valori ora mostrati sono zero*/
+			/*the number of displayed values is now zero*/
 			valuesDisplayed = 0;
 			document.getElementById("currentNumVal").innerHTML = valuesDisplayed;
 
-			/*reset di cnt*/
+			/*reset cnt*/
 			cnt = 0;
-			/*reset di alldata*/
+			/*reset alldata*/
 			allData = [];
 
 			/*reset timestamp*/
@@ -259,7 +259,7 @@
 
 	function setNewRate() {
 		updateFrequency = parseFloat(document.getElementById("targetRate").value);
-		/*la durata dell'animazione non deve essere mai maggiore del tempo di refresh*/
+		/*animation time shall never be longer than chart refresh time*/
 		$("#animationInput").attr('max', updateFrequency - 1);
 		document.getElementById("currentTargetSampleRate").innerHTML = updateFrequency;
 		clearInterval(updateIntervalFunction);
@@ -299,7 +299,7 @@
 		valuesDisplayed++;
 		var tmpTime = 0;
 
-		if (!lowCPU) {/*se lowCPU non è definito usa metodo accurato*/
+		if (!lowCPU) {/*if lowCPU is not set use accurate time esteem*/
 			tmpTime = (new Date()).getTime() - dataStartTime;
 		}
 		else {
@@ -311,7 +311,7 @@
 			var tmpValue1 = currentDataArr[0] * 10;
 			var tmpValue2 = currentDataArr[1] * 1000;
 
-			//decommentare per avere valori casuali per debug
+			//Uncomment for random data
 			//tmpValue1 = (Math.random() > 0.5 ? -1 : 1) * Math.round(Math.random() * 10); tmpValue2 = tmpValue1;
 
 			data.datasets[0].data.push({x: tmpValue1, y: tmpValue2});
@@ -321,8 +321,8 @@
 		else {
 			var tmpValue = currentDataArr[0] * 100;
 			
-			//decommentare per avere valori casuali per debug
-			tmpValue = Math.random() * 100;
+			//Uncomment for random data
+			//tmpValue = Math.random() * 100;
 			
 			var tmpData = {x: tmpTime, y: tmpValue}
 			data.datasets[0].data.push(tmpData);
@@ -440,7 +440,7 @@
 	}
 	function setSmoothLines() {
 		data.datasets[0].lineTension = parseFloat(document.getElementById("smoothLines").value);
-		myLineChart.update(); //update del grafico ricarica la variabile data
+		myLineChart.update(); //update chart, reloads variable "data"
 	}
 	function setAnimation() {
 		animationUpdateTime = parseFloat(document.getElementById("animationInput").value);
@@ -477,7 +477,7 @@
 	}
 	function fadeLoadingDiv() {
 		$(".loadingDiv").fadeOut(2000, function() { $(this).remove(); });
-	}/*
+	}
 	function connectWebsocket() {
 		$('.connectionIndicator').css('background-color', 'yellow');
 		websocket = new WebSocket('ws://' + window.location.hostname + ':9999', 'phylab');
@@ -494,7 +494,7 @@
 		};
 		websocket.onmessage = function (message) {
 			console.info(message.data);
-			/*$('#debug').append($('<p>', { text: message.data }));*//*
+			/*$('#debug').append($('<p>', { text: message.data }));*/
 			if (message.data.charAt(0) == 'D') {
 				currentDataArr[0] = parseFloat(message.data.substring(1, 6));
 				//console.info(cnt);
@@ -512,11 +512,11 @@
 				gotDBData(message.data);
 			}
 		};
-	}*/
+	}
 	function reconnectWebsocket() {		
 		stopChart();
-		//websocket.close();
-		//connectWebsocket();
+		websocket.close();
+		connectWebsocket();
 	}
 	var useDB = false;
 	function changeUseDB() {
@@ -546,7 +546,7 @@
 	}
 	var lastTimestamp = 0;
 	function updateWithDB() {
-		// websocket.send(sensorType + "T" + zeroPad(lastTimestamp, 13));
+		websocket.send(sensorType + "T" + zeroPad(lastTimestamp, 13));
 		gotData = true;
 	}
 	function gotDBData(data) {
@@ -585,7 +585,7 @@
 </script>
 </head>
 <body onLoad=initChart()>
-<!--	<div class="loadingDiv">CAIRCAMENTO IN CORSO IL DIV DEVE ESSERE FULLSCREEN</div>-->
+<!--	<div class="loadingDiv">Loading...</div>-->
   
   
   <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -685,7 +685,6 @@
 			<span>Shown values:</span>
     	    <input id="maxInput" type="number" min="5" max="10000" step="1" value="100" oninput=setMaxValue() />
             <br>
-    	    <!--<button id="maxButton" type="button" onClick="setMaxValue()">Set</button>-->
     	    <span>Currently shown values:</span> 
             <div id="currentNumVal" style="display: inline">0</div>
               <br>
