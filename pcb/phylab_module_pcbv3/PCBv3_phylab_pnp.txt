@@ -1,0 +1,45 @@
+*Pick And Place List
+*Company=
+*Author=
+*eMail=
+*
+*Project=PCBv3_phylab
+*Date=19:10:34
+*CreatedBy=Fritzing 0.9.2b.11.19.8d2d5970658f0bed09c661c9ea9a515b5f40f44c
+*
+*
+*Coordinates in mm, always center of component
+*Origin 0/0=Lower left corner of PCB
+*Rotation in degree (0-360, math. pos.)
+*
+*No;Value;Package;X;Y;Rotation;Side;Name
+1;;THT;22.3582;-30.168;-90;Bottom;NRF24L01+
+2;;;46.4883;-3.4979;0;Bottom;Hole1
+3;1µF;100 mil [THT, electrolytic];3.30821;-41.598;-90;Bottom;C3
+4;10µF;100 mil [THT, electrolytic];38.8682;-31.438;180;Bottom;C2
+5;1µF;100 mil [THT, electrolytic];45.2182;-31.438;-90;Bottom;C1
+6;;THT;37.5982;-4.76798;-90;Bottom;ISP
+7;;;46.4883;-46.678;0;Bottom;Hole3
+8;;;27.8659;-40.2346;0;Bottom;IMG1
+9;;;5.88789;-48.3641;0;Bottom;TXT1
+10;;;24.4925;-17.3739;90;Bottom;Part1
+11;;;3.30829;-46.678;0;Bottom;Hole4
+12;5V;TO220 [THT];20.0722;-41.598;90;Bottom;U2
+13;;;30.6603;-47.8961;0;Bottom;TXT5
+14;;;47.1436;-25.3141;90;Bottom;TXT6
+15;;;25.2739;-17.182;0;Bottom;TXT3
+16;;;28.6711;-33.6902;0;Bottom;TXT1
+17;;;25.2739;-17.1747;0;Bottom;TXT3
+18;;THT;17.2782;-6.03798;-90;Bottom;SENSOR
+19;1.25 – 36 V;sot223;39.0968;-43.4181;0;Bottom;U4
+20;;;9.51916;-2.38499;0;Bottom;TXT4
+21;;;10.9222;-44.3193;0;Bottom;TXT2
+22;;;42.8624;-2.41153;0;Bottom;TXT1
+23;;dip;24.8982;-17.468;-90;Bottom;U5
+24;;;18.5639;-2.55228;-0.999999;Bottom;TXT7
+25;;300 mil [THT];10.9536;-40.328;0;Bottom;D1
+26;220;THT;30.9307;-5.61324;180;Bottom;R1
+27;;;3.30829;-3.4979;0;Bottom;Hole2
+28;;;7.84058;-7.28664;0;Bottom;TXT1
+29;;;8.67396;-32.8985;0;Bottom;7-20V DC IN
+30;;THT;10.9282;-46.678;-90;Bottom;5v 3.3v GND

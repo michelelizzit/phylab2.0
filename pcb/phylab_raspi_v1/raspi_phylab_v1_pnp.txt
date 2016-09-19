@@ -1,0 +1,30 @@
+*Pick And Place List
+*Company=
+*Author=
+*eMail=
+*
+*Project=raspi_phylab_v1
+*Date=19:12:09
+*CreatedBy=Fritzing 0.9.2b.11.19.8d2d5970658f0bed09c661c9ea9a515b5f40f44c
+*
+*
+*Coordinates in mm, always center of component
+*Origin 0/0=Lower left corner of PCB
+*Rotation in degree (0-360, math. pos.)
+*
+*No;Value;Package;X;Y;Rotation;Side;Name
+1;;;21.1015;-17.6568;-90;Bottom;TXT3
+2;;THT;17.4365;-17.6803;0;Bottom;J2
+3;;;13.2643;-23.3175;0;Bottom;Via1
+4;;;15.9944;-1.12776;0;Bottom;TXT4
+5;0.1µF;D 7343 [SMD, tantalum];8.32543;-8.71248;0;Bottom;C3
+6;;;1.9049;-3.84424;0;Bottom;Via4
+7;0.1µF;D 7343 [SMD, tantalum];8.25487;-3.27967;0;Bottom;C4
+8;;;6.75923;-17.6306;0;Bottom;IMG1
+9;;;8.11379;-22.0475;0;Bottom;Via3
+10;;;7.05556;-1.86859;0;Bottom;TXT2
+11;0.1µF;D 7343 [SMD, tantalum];7.494;-19.3858;0;Bottom;C1
+12;0.1µF;D 7343 [SMD, tantalum];8.18432;-14.0747;0;Bottom;C2
+13;;;7.72584;-24.7431;0;Bottom;TXT1
+14;;THT;7.51671;-28.4836;90;Bottom;J1
+15;;;11.571;-21.9769;0;Bottom;Via2
