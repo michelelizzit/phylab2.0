@@ -1,0 +1,823 @@
+/*
+TODO: [ingrandire barra in basso per mobile] OK 
+*/
+
+/*COLOR PALETTE*/
+
+:root {
+  --color1: /*#295073*/#092854; /*blu scuro*/
+  --color2: /*#35748C*/#1765D4; /*blu*/
+  --color3: /*#97F2F0*/#5A8FDB; /*azzurro*/
+  --color4: #BC988B; /*marroncino*/
+  --color5: #BF3E3B; /*rosso*/
+  --color6: white;   /*bianco*/
+  --color7: /*#F2E09B*/#fff2c0; /*giallino*/
+  --color8: #375887;  /*bluetto*/
+}
+
+:root {
+  --scrollbar: var(--color5); /*  --scrollbar: #F2E09B;*/
+  --scrollbar-thumb: var(--color5);
+  --body: var(--color2); 
+  --body-background: var(--color6);
+  --debug: var(--color1); /*#585858*/
+  --debug-font: var(--color7);
+  --debug-border: var(--color2);
+  --controls: var(--color1);
+  --controls-border: var(--color6);
+  --hover: var(--color2);
+  --hoverText: var(--color7);
+  --hover-border: var(--color8);
+  --checkbox-after: var(--color5);
+  --phylab-title-background: #FFFFFF;
+  --chartDiv: var(--color6);
+  --credits-bg: var(--color6);
+  --range-focus: var(--color6);
+  --trigger: var(--color2);
+  --buttonBorder: var(--color2);
+  --buttonHover: var(--color2);
+  --creditsColor: #444;
+  --rangeBackground: var(--color2);
+  --checkboxChecked: var(--color3);
+  --scrollbarTrack: #ffc8c7;
+  --phylabTitle: var(--color8);
+  --phylabLine: var(--color8);
+}
+
+/*RULES*/
+
+canvas {
+    float: left;
+    background: var(--chartDiv);
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    /*-webkit-box-shadow: inset 0 0 6px var(--scrollbar)*//*rosso*/;
+    /*box-shadow: inset 0 0 6px var(--scrollbar)*//*rosso*/;
+    background: var(--scrollbarTrack);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: var(--scrollbar-thumb); /*rgba(255, 112, 0, 0.86)*/
+    -webkit-box-shadow: inset 0 0 6px var(--scrollbar); /*rgba(0, 0, 0, 0.93)*/
+    box-shadow: inset 0 0 6px var(--scrollbar); /*rgba(0, 0, 0, 0.93)*/
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: var(--scrollbar-thumb); /*rgba(255, 0, 0, 0.4)*/
+    -webkit-box-shadow: inset 0 0 6px var(--scrollbar);
+}
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    color: var(--body);
+    margin: 0px;
+    height: 100%;
+    line-height: 35px;
+    background-color: var(--body-background);
+}
+
+.loadingDiv {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+input[type=checkbox]{
+    visibility: hidden;
+}
+#debug {
+    /*Animazione*/
+    -webkit-transition: all 2s ease-in;
+    -o-transition: all 2s ease-in;
+    -moz-transition: all 2s ease-in;
+    transition: all 2s ease-in;
+    width: calc(20% + 30px);
+    min-width: 220px;
+    /*min-height: 610px;*/
+    
+    float: right;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: var(--debug); 
+    color: var(--debug-font);
+    border: 1px solid var(--debug-border);
+    border-radius: 1px;
+}
+
+#controls {
+    display: block;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    border-top: 1px solid var(--controls-border);
+    height: 25px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    background-color: var(--controls);
+    z-index: 2000;
+}
+#buttons {
+    text-align: center;
+    display: inline-block;
+    width: calc(100% - 300px);
+}
+
+input, select {
+    background-color: var(--color1);
+    border: 1px solid var(--hover-border);
+    border-radius: 1px;
+    color: var(--hoverText);
+}
+input:hover, select:hover {
+    background-color: var(--hover);
+    color: var(--hoverText);
+    border: 1px solid var(--hover-border);
+    transition: 0.5s ease-out;
+}
+input:focus, select:focus {
+    /*box-shadow: 0 0 15px var(--color3);*/
+    outline: none;
+    color: var(--hoverText);
+    background-color: var(--hover);
+}
+input[type=range] {
+    -webkit-appearance: none;
+    width: calc(100% - 10px);
+    background: transparent;
+    border-radius: 1px;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /*border: 1px solid #000000;*/
+    width: 10px;
+    height: 25px;
+    border-radius: 3px;
+    background: var(--chartDiv);
+    cursor: pointer;
+    margin-top: -14px;
+    /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px var(--color2);*/
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 10px;
+    cursor: pointer;
+    /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px var(--color2);*/
+    background: var(--rangeBackground); /*#FCAD33*/
+    border-radius: 1.3px;
+    box-shadow: none !important;
+    /*border: 0.2px solid #010101;*/
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: var(--rangeBackground); /*color4*/
+    /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px var(--color2);*/
+}
+button {
+    height: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: var(--creditsColor);
+    background-color: #FFFFFF;
+    border: 1px solid #334242;
+    border-radius: 2px;
+    transition: background-color 0.5s, border 0.5s ease-out, box-shadow 0.5s linear, color 0.5s linear;
+}
+button:hover {
+    background-color: var(--hover);
+    color: var(--hoverText);
+    /*border: 1px solid var(--hover-border);*/
+}
+button:focus {
+    height: 25px;
+    color: #FFFFFF;
+    /*background-color: var(--hoverColor);*/
+    background-color: var(--hover);
+    
+    outline: none;
+    /*box-shadow: 0 0 15px var(--color2);*/
+}
+#smoothLines:hover,
+#animationInput:hover {
+    border: 1px solid #334242;
+    transition: border 0.5s ease-out, box-shadow 0.5s ease-out;
+    /*box-shadow: 0 0 15px var(--color2);*/
+    outline: none;
+}
+#smoothLines,
+#animationInput {
+    transition: border 0.5s ease-out, box-shadow 0.5s ease-out;
+}
+
+div.phyLabSettingsTitle {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+}
+
+#downloadButton,
+#downloadChartButton {
+    width: 120px;
+    margin-top: 5px;
+}
+#connectionStatus {
+    float: left;
+    height: 25px;
+    /*width: 300px;*/
+    margin-top: -5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+#connectionIndicator {
+    width: 15px;
+    height: 15px;
+    box-shadow: 0px 0px 25px 0px rgba(255, 0, 0, 1);
+    border-radius: 100px;
+    background-color: #FF0000;
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: -3.5px;
+}
+#options {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+#minValScale {
+    width: 51px;
+    padding-left: 2px;
+}
+button.disappearHover {
+    transition: all 0.5s ease-in 1s;
+    opacity: 1;
+}
+div.notDisappearHover {
+    transition: all 0.5s 1s;
+    opacity: 0;
+}
+#moreOptionsDiv:hover > button.disappearHover {
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+#moreOptionsDiv:hover > div.notDisappearHover {
+    transition: all 0.5s;
+    opacity: 1;
+}
+#moreOptionsDiv:hover {
+    margin-top: -60px;
+    height: 332px;
+    height: 365px;
+    transition: height 1s, margin-top 0.5s ease-in-out;
+}
+#moreOptionsDiv {
+    margin-top: 5px;
+    overflow: hidden;
+    height: 26px;
+    transition: height 0.75s 1s, margin-top 0.5s 1s;
+}
+div.chartDiv {
+    width: calc(80% - 80px);
+    max-width: calc(100% - 270px);
+    height: calc(100% - 31px);
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--chartDiv);
+    margin-left: 10px;
+    padding-right: 10px;
+}
+div.autoScale {
+    display: inline-block;
+    background-color: var(--chartDiv);
+}
+input[type=checkbox].hideCheckbox {
+    visibility: hidden;
+}
+
+.autoScale {
+    width: 80px;
+    height: 26px;
+    background: #333;
+    margin: 20px auto;
+    margin-left: 15px;
+    border-radius: 50px;
+    position: relative;
+    /*box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);*/
+}
+.autoScale:after {
+    content: 'OFF';
+    font: 12px/26px sans-serif;
+    color: #000;
+    position: absolute;
+    right: 10px;
+    z-index: 0;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, .15);
+}
+.autoScale:before {
+    content: 'ON';
+    font: 12px/26px sans-serif;
+    color: #00bf00;
+    position: absolute;
+    left: 10px;
+    z-index: 0;
+    font-weight: bold;
+}
+.autoScale label {
+    display: block;
+    width: 34px;
+    height: 20px;
+    border-radius: 50px;
+    transition: all .4s ease;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    /*box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);*/
+    
+	/*background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);*/
+    background: var(--color3);
+}
+.autoScale input[type=checkbox]:checked + label {
+    left: 43px;
+}
+#credits {
+    background: var(--credits-bg);
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    top: 100%;
+    right: calc(50% - 200px);
+    opacity: 0;
+    text-align: center;
+    z-index: 7000;
+    border: 2px solid #202020;
+    font-size: 24px;
+    transition: top 0.5s ease-out, opacity 0.25s linear;
+    line-height: 10px;
+    color: var(--creditsColor);
+}
+
+.link{
+    text-decoration: none;
+    font-size: 15px;
+    color: var(--creditsColor);
+}
+
+#form {
+    margin-bottom: -15px;
+}
+#phylabTitle {
+    color: var(--phylabTitle);
+    height: 20px;
+    width: 100%;
+    border-bottom: 1px solid var(--phylabLine);
+    padding-bottom: 10px;
+    padding-top: 50px;
+    background-color: var(--phylab-title-background);
+}
+
+#phylabTitle h1{
+    margin-top: -20px;
+    margin-left: calc(50% - 95px);
+    font-size: 45px;
+
+}
+
+#phylabTitle img{
+    width: auto;
+    height: 45px;
+    float: left;
+    margin-top: -30px;
+    margin-left: 10px;
+}
+
+div.container {
+    overflow-y: auto;
+    overflow-x: none;
+    height: calc(100% - 132px);
+    padding-top: 10px;
+}
+
+#reconnectButton {
+    display: inline;
+}
+
+input[type=number]{
+    padding-left: 2px;
+    width: 55px;
+}
+
+#creditsButton {
+    float: right;
+    margin-top: 3px;
+    display: inline;
+}
+#creditsButton:focus + #credits, #credits:focus {
+    opacity: 0.75;
+    top: calc(50% - 200px);
+    
+    -webkit-transition: top 0.5s ease-out, opacity 0.25s linear 0.25;
+    -o-transition: top 0.5s ease-out, opacity 0.25s linear 0.25;
+    -moz-transition: top 0.5s ease-out, opacity 0.25s linear 0.25;
+    transition: top 0.5s ease-out, opacity 0.25s linear 0.25;
+}
+
+.displayNone {
+    display: none;
+}
+
+.lowerCase {
+    font-size: 13px;
+}
+
+#moreOptions {
+    width: 90%;
+}
+
+#DBoptions {
+    padding-bottom: 6px;
+}
+
+.checkStyle {
+    outline: none;
+	width: 20px;
+	height: 20px;
+	background: var(--checkboxChecked);
+
+	/*background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);*/
+	background: var(--color6);
+	margin: 5px auto;
+
+	border-radius: 50px;
+
+	/*box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);*/
+	position: relative;
+	
+	display: inline-block;
+}
+
+.checkStyle label {
+	cursor: pointer;
+	position: absolute;
+	width: 14px;
+	height: 14px;
+
+	border-radius: 50px;
+	left: 3px;
+	top: 3px;
+
+	/*box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);*/
+
+	/*background: -webkit-linear-gradient(top, #092854 0%, #1765D4 100%);
+	background: linear-gradient(top, #092854 0%, #1765D4 100%);*/
+	background: var(--color8);
+}
+
+.checkStyle label:after {
+	filter: alpha(opacity=0);
+	opacity: 0;
+	content: '';
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background: var(--checkbox-after);
+
+	background: var(--checkboxColor);
+	background: var(--checkboxChecked);
+
+	border-radius: 50px;
+	top: 3px;
+	left: 3px;
+
+	/*box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);*/
+}
+
+.checkStyle input[type=checkbox]:checked + label:after {
+	filter: alpha(opacity=100);
+	opacity: 1;
+}
+
+#targetRate {
+    z-index: 6000;
+}
+
+#currentDataValDiv {
+    display: inline-block; 
+    margin-left: 10px; 
+    margin-top: -35px;
+    color: white;
+    width: 150px;
+}
+
+/*Regole mobile*/
+
+@media only screen and (max-width: 399px) {
+    html {
+        transform: scale(.8);
+        -webkit-transform: scale(.8);
+        -moz-transform: scale(.8);
+        -o-transform: scale(.8);
+        width: 125%;
+        height: 125%;   
+        position: absolute;
+        top: -12.5%;
+        left: -12.5%;
+    }
+}
+
+@media only screen and (max-width: 325px) {
+    html {
+        transform: scale(.66666);
+        -webkit-transform: scale(.66666);
+        -moz-transform: scale(.66666);
+        -o-transform: scale(.66666);
+        width: 150%;
+        height: 150%;   
+        position: absolute;
+        top: -25%;
+        left: -25%;
+    }
+}
+
+.nav-trigger {
+    display: none;
+}
+/*
+@media only screen and (min-resolution: 117dpi) and (max-resolution: 119dpi), only screen and (min-resolution: 131dpi) and (max-resolution: 133dpi), only screen and (min-resolution: 145dpi) and (max-resolution: 154dpi), only screen and (min-resolution: 162dpi) and (max-resolution: 164dpi), only screen and (min-resolution: 169dpi) {*/
+@media only screen and (max-width: 800px) {
+.nav-trigger {
+    display: block;
+    visibility: hidden;
+    top: 10px;
+    right: 200px;
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    }
+    
+label[for="nav-trigger"] {
+    position: fixed;
+    top: 15px;
+    right: 0px;
+    margin-right: 0px;
+    z-index: 10000;
+    width: 50px;
+    height: 50px;
+    background-color: var(--trigger);
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-right: 5px solid var(--debug);
+        
+    transition: margin-right 0.18s;
+    /*background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='50px' height='50px' viewBox='0 0 50 50'><rect y='7' x='7' width='38' height='7' fill='#FFF'/><rect y='21' x='7' width='38' height='7' fill='#FFF'/><rect x='7' y='35' width='38' height='7' fill='#FFF'/></svg>");*/
+}
+
+.triggerDiv {
+    height: 4px;
+    width: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    background-color: white;
+    display: block;
+    margin-top: 5px;
+    transition: all 0.5s;
+}
+#triggerDivOne {
+    margin-top: 15px;
+}
+.nav-trigger:checked + label #triggerDivOne {
+    transform: rotate(220deg);
+    /*transform: rotate(40deg);*/
+    width: 25px;
+    margin-right: 6px;
+    margin-top: 17px;
+}
+.nav-trigger:checked + label #triggerDivTwo {
+    transform: rotate(180deg);
+    /*transform: rotate(0deg);*/
+    width: 30px;
+    margin-top: 3px;
+}
+.nav-trigger:checked + label #triggerDivThree {
+    transform: rotate(140deg);
+    /*transform: rotate(-40deg);*/
+    width: 25px;
+    margin-right: 6px;
+    margin-top: 3px;
+}
+    
+.mobileWrapper, .navTrigger {
+    transition: right 0.2s;
+    transition: margin-right 0.2s;
+    transition: width 0.2s;
+}
+.mobileWrapper {
+    transition: right 0.2s;
+    transition: margin-right 0.2s;
+    transition: width 0.2s;
+    width: 100%;
+}
+#phylabTitle {
+    width: 100%;
+    transition: width 0.2s;
+}
+.nav-trigger:checked + label {
+    transition: margin-right 0.22s;
+    margin-right: 231px;
+}
+
+div.chartDiv {
+    height: calc(100% - 61px);
+    float: none !important;
+    max-width: none !important;
+    width: calc(100% - 25px) !important;
+    overflow-x: hidden;
+}
+.nav-trigger:checked ~ .mobileWrapper {
+    margin-right: 235px;
+    width: calc(100% - 235px);
+}
+.nav-trigger:checked ~ .mobileWrapper #myChart {
+    width: calc(100% - 10px) !important;
+}
+.nav-trigger:checked ~ .mobileWrapper #phylabTitle {
+    width: calc(100% + 235px) !important;
+}
+.nav-trigger:checked ~ #controls #credits {
+    margin-right: 235px;
+}
+#credits {
+    transition: margin-right 0.2s linear, top 0.5s ease-out, opacity 0.25s linear;
+}
+#myChart {
+    transition: width 0.2s;
+}
+#debug {
+    position: fixed;
+    right: -245px;
+    top: 0px;
+    float: none !important;
+    height: calc(100% - 82px) !important;
+    overflow-y: auto;
+    margin-right: 0px !important;
+    width: 220px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 0px;
+    z-index: 5000;
+    transition: right 0.2s;
+}
+#debug::-webkit-scrollbar {
+    width: 3px;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+#debug::-webkit-scrollbar-thumb {
+    background:/* #FF0000*/ var(--color6);
+    height: 20px;
+    box-shadow: none;
+    border-radius: 0;
+}
+#debug::-webkit-scrollbar-track {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+.nav-trigger:checked ~ .mobileWrapper #debug {
+    right: 0px;
+}
+.mobileDebug {
+    width: 0px;
+}
+div.container {
+    overflow-y: hidden;
+}
+
+/*when seen from mobile always show advanced options*/
+button.disappearHover {
+    opacity: 0;
+}
+div.notDisappearHover {
+    opacity: 1;
+}
+#moreOptionsDiv {
+    height: auto !important;
+    margin-top: -60px !important;
+}
+
+#controls {
+    height: 70px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+#buttons {
+    height: 70px;
+    width: calc(100% - 261px);
+    text-align: initial;
+    display: inline-block;
+    min-width: 175px;
+}
+#buttons button {
+    width: calc(33% - 8px);
+    height: 100%;
+    font-size: 20px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-left-width: 2px;
+    border-left-style: solid;
+    border-left-color: var(--buttonBorder);
+    border-radius: 0px;
+    
+    box-shadow: none;
+    text-align: center;
+    padding-left: 0px;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+#buttons button:hover, #creditsButton:hover {
+    background-color: var(--buttonHover);
+}
+#stopButton {
+    border-right: 2px solid var(--buttonBorder) !important;
+    background-image: url("phylab_stop.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: -4px;
+}
+#startButton {
+    background-image: url("phylab_start.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: -4px;
+}
+#resetButton {
+    background-image: url("phylab_reset.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#creditsButton{
+    width: 77px;
+    height: 100%;
+    font-size: 20px;
+    background-color: transparent;
+    color:white;
+    border: none;
+    /*border-left: 2px solid var(--buttonBorder);*/
+    box-shadow: none;
+    display: block;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+    padding: 0px; 
+    border-left: 2px solid var(--buttonBorder);
+}
+
+
+#currentDataValDiv {
+    height: 100%;
+    width: 130px;
+    margin-top: -20px;
+    text-align: left;
+    vertical-align: middle;
+    /*padding-top: 15px;*/
+}
+.notDisplayMobile {
+     display: none;   
+}
+}
+
+
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    background: transparent;
+    background: transparent url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='16px' height='17px' viewBox='0 0 16 17'><polygon points='8,2 12,7 4,7' style='fill:#375887' /><polygon points='8,15 12,10 4,10' style='fill:#375887' /></svg>") no-repeat center center;  
+    width: 16px;
+    height: 17px;
+    border-left: 1px solid var(--hover-border);
+    opacity: 1;
+}
+input[type="number"]:hover::-webkit-inner-spin-button, input[type="number"]:focus::-webkit-inner-spin-button {
+    background: transparent url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='16px' height='17px' viewBox='0 0 16 17'><polygon points='8,2 12,7 4,7' style='fill:#fff2c0' /><polygon points='8,15 12,10 4,10' style='fill:#fff2c0' /></svg>") no-repeat center center; 
+}
+input:-webkit-autofill {
+    background: black;
+    color: red;
+}
