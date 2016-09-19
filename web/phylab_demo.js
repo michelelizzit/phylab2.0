@@ -95,7 +95,7 @@ function initChart() {
     refreshChart();
     setAutoScale();
     fadeLoadingDiv();
-    connectWebsocket();
+    //connectWebsocket();
 }
 
 function downloadData() {
@@ -170,18 +170,18 @@ function refreshChart() {
 }
 
 var allData = [];
-
+/*
 window.WebSocket = window.WebSocket || window.MozWebSocket;
-var websocket;
+var websocket;*/
 
 function sendDebugStr() {
-	websocket.send($('#debugInput').val());
+	//websocket.send($('#debugInput').val());
 	console.log("SENT: " + $('#debugInput').val());
 	$('#debugInput').val('');
 }
 
 function clearData() {
-	websocket.send(sensorType + "D");
+	//websocket.send(sensorType + "D");
 	resetChart();
 	alert("Data archive cleared");
 }
@@ -194,6 +194,7 @@ function getTemperature() {
 	currentDataArr[0] = currentDataArr[0] / 10000;
 	updateChart();
 	updateTempDiv();
+	gotData = true;
 }
 
 function resetChart() {
@@ -295,7 +296,7 @@ function updateChart() {
 		var tmpValue2 = currentDataArr[1] * 1000;
 
 		//Uncomment for random data
-		//tmpValue1 = (Math.random() > 0.5 ? -1 : 1) * Math.round(Math.random() * 10); tmpValue2 = tmpValue1;
+		tmpValue1 = (Math.random() > 0.5 ? -1 : 1) * Math.round(Math.random() * 10); tmpValue2 = tmpValue1;
 
 		data.datasets[0].data.push({x: tmpValue1, y: tmpValue2});
 		data.labels.push(tmpValue1 + "V " + tmpValue2 + "A");
@@ -305,7 +306,7 @@ function updateChart() {
 		var tmpValue = currentDataArr[0] * 100;
 
 		//Uncomment for random data
-		//tmpValue = Math.random() * 100;
+		tmpValue = Math.random() * 100;
 
 		var tmpData = {x: tmpTime, y: tmpValue}
 		data.datasets[0].data.push(tmpData);
@@ -460,7 +461,7 @@ function setSensorType() {
 }
 function fadeLoadingDiv() {
 	$(".loadingDiv").fadeOut(2000, function() { $(this).remove(); });
-}
+}/*
 function connectWebsocket() {
 	$('.connectionIndicator').css('background-color', 'yellow');
 	websocket = new WebSocket('ws://' + window.location.hostname + ':9999', 'phylab');
@@ -477,7 +478,7 @@ function connectWebsocket() {
 	};
 	websocket.onmessage = function (message) {
 		console.info(message.data);
-		/*$('#debug').append($('<p>', { text: message.data }));*/
+		*//*$('#debug').append($('<p>', { text: message.data }));*//*
 		if (message.data.charAt(0) == 'D') {
 			currentDataArr[0] = parseFloat(message.data.substring(1, 6));
 			//console.info(cnt);
@@ -495,11 +496,11 @@ function connectWebsocket() {
 			gotDBData(message.data);
 		}
 	};
-}
+}*/
 function reconnectWebsocket() {		
 	stopChart();
-	websocket.close();
-	connectWebsocket();
+	//websocket.close();
+	//connectWebsocket();
 }
 var useDB = false;
 function changeUseDB() {
@@ -529,7 +530,7 @@ function zeroPad(val, resultSize) {
 }
 var lastTimestamp = 0;
 function updateWithDB() {
-	websocket.send(sensorType + "T" + zeroPad(lastTimestamp, 13));
+	//websocket.send(sensorType + "T" + zeroPad(lastTimestamp, 13));
 	gotData = true;
 }
 function gotDBData(data) {
@@ -538,11 +539,11 @@ function gotDBData(data) {
 	for (var cnt = 1; cnt < numData - 1; cnt++) {
 		addToChart(dataLines[cnt].split('\t'));
 	}
-
+/*
 	if (data.charAt(1) == "2")
 		websocket.send(sensorType + "T" + zeroPad(lastTimestamp, 13));
 	else
-		myLineChart.update(0, true);
+		myLineChart.update(0, true);*/
 }
 function updateDBavailable() {
 	if (dbAvailable) {
