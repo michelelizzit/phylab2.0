@@ -31,7 +31,7 @@ Software for some transmitting units we have developed (humidity, temperature, a
 
 Demo version with random data available at: https://lizzit.it/phylab/demo/  
 The demo version just shows the web interface, plotting random data, and is not connected to any sensor.
-<img src="http://i.imgur.com/mhHIL1G.png" width=300px/>
-<img src="http://i.imgur.com/1rWJHnS.png" width=300px/>
-<img src="http://i.imgur.com/liXiX2X.png" width=300px/>
-<img src="http://i.imgur.com/78djOSZ.png" width=300px/>
+<img src="http://i.imgur.com/mhHIL1G.png" width=200px/>
+<img src="http://i.imgur.com/1rWJHnS.png" width=200px/>
+<img src="http://i.imgur.com/liXiX2X.png" width=200px/>
+<img src="http://i.imgur.com/78djOSZ.png" width=200px/>
