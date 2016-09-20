@@ -35,4 +35,4 @@ The demo version just shows the web interface, plotting random data, and is not 
 <img src="http://i.imgur.com/1rWJHnS.png" width=200px/>
 <img src="http://i.imgur.com/liXiX2X.png" width=200px/>
 <img src="http://i.imgur.com/78djOSZ.png" width=200px/>
-<img src="http://i.imgur.com/eIriPYH.png" width=800px/>
+<img src="http://i.imgur.com/eIriPYH.png" width=816px/>
