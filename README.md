@@ -1,4 +1,4 @@
-# [PhyLab 2.0] (https://lizzit.it/phylab)
+4# [PhyLab 2.0] (https://lizzit.it/phylab)
 
 More details available at https://lizzit.it/phylab
 
@@ -13,13 +13,13 @@ Each transmitting module send data to the central unit either via an nRF24L01+ m
 The data is then saved on the central unit and sent to all the connected clients.  
 The central unit can also act as a web server, and as a WiFi hotspot, this allows the system to be transported easily.  
 It was designed for physics experiments at school, in a physics laboratory, and from that the name PhyLab 2.0
-A transmitting unit is usually based on an Arduino, connected with a sensor and an nRF24L01+ module but a transmitting unit can be made with any microcontroller and any sensor;  
+3 transmitting unit is usually based on an Arduino, connected with a sensor and an nRF24L01+ module but a transmitting unit can be made with any microcontroller and any sensor;  
 ###PhyLab PCBs
 We designed two PhyLab PCBs, one that allows an nRF24L01+ module to be easily connected to the RaspberryPi and one that allows to easily build a transmitting unit; more details are available at https://lizzit.it/phylab/  
-<img src="http://i.imgur.com/BDOgZFu.jpg" width=300px/>
-<img src="http://i.imgur.com/aqlaFSg.jpg" width=300px/>
-<img src="http://i.imgur.com/2D74W3K.jpg" width=300px/>
-<img src="http://i.imgur.com/K00j45U.jpg" width=300px/>
+<img src="http://i.imgur.com/BDOgZFu.jpg" width=400px/>
+<img src="http://i.imgur.com/aqlaFSg.jpg" width=400px/>
+<img src="http://i.imgur.com/2D74W3K.jpg" width=400px/>
+<img src="http://i.imgur.com/K00j45U.jpg" width=400px/>
 
 ##Software
 A pre-built image for RaspberryPI 3 is available, it includes all the software required on the server and in addition it creates a WiFi hotspot; this is the easiest way to set up a complete PhyLab 2.0 system.
@@ -31,7 +31,7 @@ Software for some transmitting units we have developed (humidity, temperature, a
 
 Demo version with random data available at: https://lizzit.it/phylab/demo/  
 The demo version just shows the web interface, plotting random data, and is not connected to any sensor.
-<img src="http://i.imgur.com/mhHIL1G.png" width=400px/>
-<img src="http://i.imgur.com/1rWJHnS.png" width=400px/>
-<img src="http://i.imgur.com/liXiX2X.png" width=400px/>
-<img src="http://i.imgur.com/78djOSZ.png" width=400px/>
+<img src="http://i.imgur.com/mhHIL1G.png" width=300px/>
+<img src="http://i.imgur.com/1rWJHnS.png" width=300px/>
+<img src="http://i.imgur.com/liXiX2X.png" width=300px/>
+<img src="http://i.imgur.com/78djOSZ.png" width=300px/>
