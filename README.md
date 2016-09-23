@@ -22,13 +22,14 @@ We designed two PhyLab PCBs, one that allows an nRF24L01+ module to be easily co
 <img src="http://i.imgur.com/K00j45U.jpg" width=400px/>
 
 ##Software
-A pre-built image for RaspberryPI 3 is available, it includes all the software required on the server and in addition it creates a WiFi hotspot; this is the easiest way to set up a complete PhyLab 2.0 system.
-It is based on PhyLab OS, a minimal linux distribution including a kernel build with just the modules required for PhyLab 2.0 to run. 
+A pre-built image for RaspberryPI 3 is available, it includes all the software required on the server and in addition it creates a WiFi hotspot; this is the easiest way to set up a complete PhyLab 2.0 system.  
+It is based on PhyLab OS, a minimal Linux distribution including a kernel build with just the modules required for PhyLab 2.0 to run.  
+This allows PhyLab 2.0 to boot in just 5 seconds and to work out of the box with no setup needed.  
 It is especially useful during physics lessons because it allows every student to see the plot and download the data from their smartphones.  
 
 Software for some transmitting units we have developed (humidity, temperature, acceleration, distance, voltage and current) will be released soon.  
 
-The pre-built image also includes a DNS and DHCP server (dnsmasq) that allows each device to connect easily and display the chart by going to http://phy.lab/
+The pre-built image also includes a DNS and DHCP server (dnsmasq) that allows each device to connect easily and display the chart by going to http://phy.lab/  
 
 
 ##Online demo
