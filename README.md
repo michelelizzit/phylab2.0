@@ -9,11 +9,11 @@ This system collects  different types of data ( temperature, humidity, speed…)
 
 ##Hardware
 The central unit needs to be a RaspberryPI 1, 2 or 3.  
-Each transmitting module send data to the central unit either via an nRF24L01+ module or via USB.
+Each transmitting module sends data to the central unit either via an nRF24L01+ module or via USB.
 The data is then saved on the central unit and sent to all the connected clients.  
 The central unit can also act as a web server, and as a WiFi hotspot, this allows the system to be transported easily.  
 It was designed for physics experiments at school, in a physics laboratory, and from that the name PhyLab 2.0
-3 transmitting unit is usually based on an Arduino, connected with a sensor and an nRF24L01+ module but a transmitting unit can be made with any microcontroller and any sensor;  
+Each transmitting unit is usually based on an Arduino, connected with a sensor and an nRF24L01+ module but a transmitting unit can be made with any microcontroller and any sensor;  
 ###PhyLab PCBs
 We designed two PhyLab PCBs, one that allows an nRF24L01+ module to be easily connected to the RaspberryPi and one that allows to easily build a transmitting unit; more details are available at https://lizzit.it/phylab/  
 <img src="http://i.imgur.com/BDOgZFu.jpg" width=400px/>
@@ -23,9 +23,13 @@ We designed two PhyLab PCBs, one that allows an nRF24L01+ module to be easily co
 
 ##Software
 A pre-built image for RaspberryPI 3 is available, it includes all the software required on the server and in addition it creates a WiFi hotspot; this is the easiest way to set up a complete PhyLab 2.0 system.
+It is based on PhyLab OS, a minimal linux distribution including a kernel build with just the modules required for PhyLab 2.0 to run. 
 It is especially useful during physics lessons because it allows every student to see the plot and download the data from their smartphones.  
 
 Software for some transmitting units we have developed (humidity, temperature, acceleration, distance, voltage and current) will be released soon.  
+
+The pre-built image also includes a DNS and DHCP server (dnsmasq) that allows each device to connect easily and display the chart by going to http://phy.lab/
+
 
 ##Online demo
 
