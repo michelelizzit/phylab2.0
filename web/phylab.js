@@ -187,13 +187,8 @@ function clearData() {
 }
 
 function getTemperature() {
-	gotData = false;
-	currentDataArr[0] = Math.random() * 10000;
-	//console.info(cnt);
-	//console.info("C: " + cnt + " T: " + currentTemp + " O: " + message.data);
-	currentDataArr[0] = currentDataArr[0] / 10000;
-	updateChart();
-	updateTempDiv();
+			gotData = false;
+			websocket.send(sensorType + "G");
 }
 
 function resetChart() {

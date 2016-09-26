@@ -1,7 +1,3 @@
-/*
-TODO: [ingrandire barra in basso per mobile] OK 
-*/
-
 /*COLOR PALETTE*/
 
 :root {
@@ -44,7 +40,6 @@ TODO: [ingrandire barra in basso per mobile] OK
   --phylabLine: var(--color8);
 }
 
-/*RULES*/
 
 canvas {
     float: left;
@@ -651,8 +646,8 @@ div.chartDiv {
     margin-right: 235px;
     width: calc(100% - 235px);
 }
-.nav-trigger:checked ~ .mobileWrapper #myChart {
-    width: calc(100% - 10px) !important;
+.nav-trigger:checked ~ .mobileWrapper .chartDiv {
+    width: calc(100% + 235px) !important;
 }
 .nav-trigger:checked ~ .mobileWrapper #phylabTitle {
     width: calc(100% + 235px) !important;
@@ -664,7 +659,10 @@ div.chartDiv {
     transition: margin-right 0.2s linear, top 0.5s ease-out, opacity 0.25s linear;
 }
 #myChart {
-    transition: width 0.2s;
+    /*transition: width 0.2s;*/
+}
+#chartDiv {
+    /*transition: width 0.2s;*/
 }
 #debug {
     position: fixed;
