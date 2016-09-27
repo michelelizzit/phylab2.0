@@ -182,6 +182,7 @@ function sendDebugStr() {
 
 function clearData() {
 	websocket.send(sensorType + "D");
+	console.log(sensorType + "D");
 	resetChart();
 	alert("Data archive cleared");
 }
@@ -525,6 +526,7 @@ function zeroPad(val, resultSize) {
 var lastTimestamp = 0;
 function updateWithDB() {
 	websocket.send(sensorType + "T" + zeroPad(lastTimestamp, 13));
+	console.log(sensorType + "T" + zeroPad(lastTimestamp, 13));
 	gotData = true;
 }
 function gotDBData(data) {
@@ -533,11 +535,18 @@ function gotDBData(data) {
 	for (var cnt = 1; cnt < numData - 1; cnt++) {
 		addToChart(dataLines[cnt].split('\t'));
 	}
+	if (numData - 2 > 1) {
+		currentDataArr[0] = parseFloat(dataLines[numData - 2].split('\t')[1]) / 10000;
+	}
 
-	if (data.charAt(1) == "2")
+	if (data.charAt(1) == "2") {
 		websocket.send(sensorType + "T" + zeroPad(lastTimestamp, 13));
-	else
+		console.log(sensorType + "T" + zeroPad(lastTimestamp, 13));
+	}
+	else {
 		myLineChart.update(0, true);
+		updateTempDiv();
+	}
 }
 function updateDBavailable() {
 	if (dbAvailable) {
