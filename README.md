@@ -33,17 +33,18 @@ The nRF24L01+ module shall be connected to the RaspberryPI as shown on the diagr
 PhyLab 2.0 RaspberryPI module already includes capacitors between VCC and GND lines.  
 ####Transmitting units
 The easiest way to build a transmitting unit is to use a PhyLab 2.0 experiment module but a trasmitting unit can be also built easily with an Arduino, an nRF24L01+ module and a sensor.  
-The nRF24L01+ shall be wired to the Arduino as follows:
+The nRF24L01+ shall be wired to the Arduino as follows:  
+
 | nRF24L01+ pin  | Arduino pin |
-| ------------- | ------------- |
-| CE  | pin 8 |
-| CSN  | pin 7 |
-| MOSI  | pin 11  |
-| MISO  | pin 12  |
-| SCK  | pin 13  |
-| IRQ  | N/C |
-| VCC  | 3.3v  |
-| GND  | GND  |
+| --- | --- |
+| CE | pin 8 |
+| CSN | pin 7 |
+| MOSI | pin 11  |
+| MISO | pin 12  |
+| SCK | pin 13  |
+| IRQ | N/C |
+| VCC | 3.3v |
+| GND | GND |
 
 ##Software
 A pre-built image for RaspberryPI 3 is available, it includes all the software required on the server and in addition it creates a WiFi hotspot; this is the easiest way to set up a complete PhyLab 2.0 system.  
@@ -52,8 +53,6 @@ This allows PhyLab 2.0 to boot in just 5 seconds and to work out of the box with
 It is especially useful during physics lessons because it allows every student to see the plot and download the data from their smartphones.  
 
 The pre-built image also includes a DNS and DHCP server (dnsmasq) that allows each device to connect easily and display the chart by going to http://phy.lab/  
-
-Software for some transmitting units we have developed (humidity, temperature, acceleration, distance, voltage and current) will be released soon.  
 
 Software for some experiments we have developed (humidity, acceleration and voltage) has been released, it can be uploaded either on a PhyLab 2.0 module or on an Arduino board.  
 
